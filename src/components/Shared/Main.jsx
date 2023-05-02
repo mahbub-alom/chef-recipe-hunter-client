@@ -5,9 +5,9 @@ import main from './main.css';
 
 const Main = () => {
     return (
-        <div >
+        <div className='main'>
             <Header></Header>
-            <Outlet className='main'></Outlet>
+            <Outlet ></Outlet>
         </div>
     );
 };
