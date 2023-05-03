@@ -2,11 +2,10 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import Rating from 'react-rating';
-import { FaRegStar, FaStar } from 'react-icons/fa';
+import { FaRegStar, FaStar, FaHeart, FaAngleDoubleRight, FaShoppingBag, FaThumbsUp } from 'react-icons/fa';
 
 const Data = () => {
     const data = useLoaderData();
-    console.log(data.recipes[0].ingredients[0]);
     return (
         <div>
             <Container>
@@ -15,11 +14,11 @@ const Data = () => {
                         <Card className='p-3'>
                             <img className='rounded' src={data.Picture} alt="" />
                             <Card.Body>
-                                <Card.Title>{data.Name}</Card.Title>
+                                <Card.Title className='fw-bold fs-3'>{data.Name}</Card.Title>
                                 <div>
-                                    <p><span>{data.Experience}</span> Years of experience</p>
-                                    <p><span>{data.recipes.length}</span> Recipes</p>
-                                    <p><span>{data.Likes}</span> Likes
+                                    <p className='fw-semibold'><span>{data.Experience}</span> Years of experience</p>
+                                    <p className='fw-semibold'><span><FaShoppingBag className='text-danger ' /> {data.recipes.length}</span> Recipes</p>
+                                    <p className='fw-semibold'><span><FaThumbsUp className='text-danger' /> {data.Likes}</span> Likes
                                     </p>
                                 </div>
                                 <Card.Text>
@@ -31,23 +30,23 @@ const Data = () => {
                     {
                         data?.recipes?.map(d => (
                             <Col lg={9}>
-                                <div lg={3} className='p-2 d-lg-flex justify-content-around align-item-center' >
+                                <div lg={3} className='p-2 d-lg-flex justify-content-around align-item-center bg-info rounded' >
                                     <div style={{ width: '200px' }}>
-                                        <img className='img-fluid' src={d.image} alt="" />
+                                        <img className='img-fluid rounded' src={d.image} alt="" />
                                     </div>
                                     <div style={{ width: '300px' }}>
                                         <h3 className='text-light'>{d.name}</h3>
-                                        <p>{d.cooking_method}</p>
+                                        <p className='text-light'>{d.cooking_method}</p>
                                     </div>
                                     <div>
                                         {
                                             data.recipes[0].ingredients.map(d => (
 
-                                                <li> {d}</li>
+                                                <p className='text-light mb-0'><FaAngleDoubleRight /> {d}</p>
 
                                             ))
                                         }
-                                        <div className='flex-grow-1'>
+                                        <div className='flex-grow-1 mt-2 align-item-center mb-4'>
                                             <Rating
                                                 placeholderRating={d.rating}
                                                 readonly
@@ -55,10 +54,9 @@ const Data = () => {
                                                 placeholderSymbol={< FaStar className='text-warning' />}
                                                 fullSymbol={<FaStar />}
                                             ></Rating>
-
-                                            <span>{d?.rating}</span>
+                                            <span className='ms-1 text-light'>{d?.rating}</span>
                                         </div>
-
+                                        <button className='bg-warning border-0 rounded fw-medium p-2'><FaHeart /> FAVORITE</button>
                                     </div>
                                 </div>
                             </Col>
