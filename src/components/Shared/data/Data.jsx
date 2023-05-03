@@ -11,12 +11,12 @@ const Data = () => {
             <Container>
                 <Row>
                     <Col key={data.id} lg={3}>
-                        <Card className='p-3'>
+                        <Card className='p-3 mb-4'>
                             <img className='rounded' src={data.Picture} alt="" />
                             <Card.Body>
                                 <Card.Title className='fw-bold fs-3'>{data.Name}</Card.Title>
                                 <div>
-                                    <p className='fw-semibold'><span>{data.Experience}</span> Years of experience</p>
+                                    <p className='fw-semibold text-success'><span>{data.Experience}</span> Years of experience</p>
                                     <p className='fw-semibold'><span><FaShoppingBag className='text-danger ' /> {data.recipes.length}</span> Recipes</p>
                                     <p className='fw-semibold'><span><FaThumbsUp className='text-danger' /> {data.Likes}</span> Likes
                                     </p>

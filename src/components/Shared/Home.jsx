@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Card, CardGroup, Col, Row } from 'react-bootstrap';
-import { FaThumbsUp } from "react-icons/fa";
+import { Button, Card, Col, Row } from 'react-bootstrap';
+import { FaThumbsUp, FaShoppingBag, FaArrowCircleRight } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 const Home = () => {
@@ -19,16 +19,16 @@ const Home = () => {
                 categories.map(d => (
                     <Col key={d.id} md={4}  >
                         <Card className='mb-5'>
-                            <Card.Img style={{ height: '400px' }} className='img-fluid' variant="top" src={d.Picture} />
+                            <Card.Img style={{ height: '400px' }} className='img-fluid p-2 rounded' variant="top" src={d.Picture} />
 
-                            <Card.Title className='ms-2'>{d.Name}</Card.Title>
-                            <div className='d-flex justify-content-around align-item-center'>
-                                <p className='fs-5'>Experience Year: {d.Experience}</p>
-                                <p className='fs-5'>Number of Recipes: {d.recipes.length}</p>
+                            <Card.Title className='ms-3 fs-3 fw-bold'>{d.Name}</Card.Title>
+                            <div>
+                                <p className='fs-5 fw-semibold ms-3 text-success'>Experience Year: {d.Experience}</p>
+                                <p className='fs-5 ms-3 fw-semibold '><FaShoppingBag className='text-danger' /> Number of Recipes: {d.recipes.length}</p>
                             </div>
-                            <h4 className='ms-2'> <FaThumbsUp /> {d.Likes}</h4>
+                            <h4 className='ms-3'> <FaThumbsUp className='text-danger' /> {d.Likes}</h4>
 
-                            <Button className='btn btn-secondary '><Link className='text-decoration-none fs-5' to={`/data/${d.id}`}>View Recipe</Link></Button>
+                            <Button className='mt-3 mb-2'><Link className='text-decoration-none fs-5 text-light' to={`/data/${d.id}`}>View Recipe <FaArrowCircleRight /></Link></Button>
                         </Card>
                     </Col>
                 ))
