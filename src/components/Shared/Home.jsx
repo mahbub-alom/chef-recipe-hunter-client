@@ -14,7 +14,7 @@ const Home = () => {
             .catch(err => console.log(err.message))
     }, [])
     return (
-        <Row>
+        <Row className='ms-0 me-0'>
             {
                 categories.map(d => (
                     <Col key={d.id} md={4}  >

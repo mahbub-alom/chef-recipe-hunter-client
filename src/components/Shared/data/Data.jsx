@@ -1,11 +1,8 @@
 import React from 'react';
-// import { Card, Col, Row } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
-import Header from '../Header';
-import Footer from '../footer/Footer';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { key } from 'localforage';
-// import { FaThumbsUp } from "react-icons/fa";
+import Rating from 'react-rating';
+import { FaRegStar, FaStar } from 'react-icons/fa';
 
 const Data = () => {
     const data = useLoaderData();
@@ -50,6 +47,18 @@ const Data = () => {
 
                                             ))
                                         }
+                                        <div className='flex-grow-1'>
+                                            <Rating
+                                                placeholderRating={d.rating}
+                                                readonly
+                                                emptySymbol={<FaRegStar />}
+                                                placeholderSymbol={< FaStar className='text-warning' />}
+                                                fullSymbol={<FaStar />}
+                                            ></Rating>
+
+                                            <span>{d?.rating}</span>
+                                        </div>
+
                                     </div>
                                 </div>
                             </Col>
