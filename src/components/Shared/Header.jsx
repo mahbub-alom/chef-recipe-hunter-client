@@ -3,13 +3,13 @@ import { Nav, Navbar } from 'react-bootstrap';
 import logo from '../../assets/logo/OIP.jpg'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProviders';
+import background from './Header.css'
 
 const Header = () => {
 
-    const { user } = useContext(AuthContext);
-    console.log(user.displayName);
+    const { user, logOut } = useContext(AuthContext);
     return (
-        <div>
+        <div className='background'>
             {/* <Container> */}
             <Navbar collapseOnSelect expand="lg" bg="" variant="light">
                 <Navbar.Brand className='ps-4' href="#home"><img style={{ height: '80px', width: '80px' }} className='img-fluid' src={logo} alt="" /> <span className='fw-bold fs-2 text-success'>Gourmet Place</span></Navbar.Brand>
@@ -23,7 +23,8 @@ const Header = () => {
                     <Nav className='d-flex align-items-center gap-3 pe-4'>
                         {
                             user ?
-                                <span className='text-light'>{user.displayName}</span> :
+                                <span className='text-light'>{user?.displayName}</span>
+                                :
                                 <button type="button" className="btn btn-success mt-3"><Link className='text-white text-decoration-none' to='/login'>Login</Link></button>
                         }
                     </Nav>

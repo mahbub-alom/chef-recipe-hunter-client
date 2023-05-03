@@ -1,42 +1,75 @@
-import React from 'react';
-import { Button, Container, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import React, { useContext } from "react";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProviders";
 
-const Login = () => {
+function Login() {
+    const { logIn, googleLogin } = useContext(AuthContext)
+
+    const handleLogin = (event) => {
+        event.preventDefault()
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        logIn(email, password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+            })
+            .catch(err => {
+                console.log(err.message);
+            })
+    }
+
+    const googleSignIn = () => {
+        googleLogin()
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+            })
+            .catch(err => {
+                console.log(err.message);
+            })
+    }
+
     return (
-        <div className='mb-4'>
-            <Container className='w-25 mx-auto mt-5 border rounded p-5'>
-                <Form>
-                    <h2>Please Login!!!</h2>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" name='email' placeholder="Enter email" required />
-                    </Form.Group>
+        <Container className="mb-4 mt-4">
+            <Row className="justify-content-center">
+                <Col className="border rounded p-4" xs={12} sm={8} md={6}>
+                    <Form onSubmit={handleLogin}>
+                        <h2 className="text-center text-success">Please Login!!!</h2>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control className="w-75" type="email" name='email' placeholder="Enter email" required />
+                        </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" name='password' placeholder="Password" required />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Remember me" />
-                    </Form.Group>
-                    <Button className='mb-2' variant="primary" type="submit">
-                        Login
-                    </Button>
-                    <br />
-                    <Form.Text className=" text-secondary">
-                        Don't have an Account? <Link to='/register'>Register</Link>
-                    </Form.Text>
-                    <Form.Text className="text-danger">
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control className="w-75" type="password" name='password' placeholder="Password" required />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                            <Form.Check type="checkbox" label="Remember me" />
+                        </Form.Group>
+                        <Button className='mb-2' variant="primary" type="submit">
+                            Login
+                        </Button>
+                        <br />
+                        <Form.Text className=" text-secondary">
+                            Don't have an Account? <Link to='/register'>Register</Link>
+                        </Form.Text>
+                        <Form.Text className="d-flex gap-3 mt-3">
+                            <button onClick={googleSignIn} className="border-0 rounded bg-success fs-6 p-2 text-light">Login with Google</button>
+                            <button className="border-0 rounded bg-success fs-6 p-2 text-light">Login with Github</button>
+                        </Form.Text>
+                        <Form.Text className="text-success">
 
-                    </Form.Text>
-                    <Form.Text className="text-success">
-
-                    </Form.Text>
-                </Form>
-            </Container>
-        </div>
+                        </Form.Text>
+                    </Form>
+                </Col>
+            </Row>
+        </Container>
     );
-};
+}
 
 export default Login;
