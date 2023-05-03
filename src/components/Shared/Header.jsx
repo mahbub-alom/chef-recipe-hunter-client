@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Nav, Navbar } from 'react-bootstrap';
 import logo from '../../assets/logo/OIP.jpg'
 import { Link } from 'react-router-dom';
 import { FaUser } from "react-icons/fa";
@@ -15,6 +15,7 @@ const Header = () => {
                     <Nav className="mx-auto">
                         <Link className='text-decoration-none me-4 fw-medium fs-5 text-white text-bg-info p-2 rounded-3 mt-3' to='/'>Home</Link>
                         <Link className='text-decoration-none me-4 fw-medium fs-5 text-white text-bg-info p-2 rounded-3 mt-3' to='/'>Blog</Link>
+
                     </Nav>
                     <Nav className='d-flex align-items-center gap-3 pe-4'>
                         <FaUser className='fs-2 text-bg-info p-2 rounded-3 mt-3'></FaUser>

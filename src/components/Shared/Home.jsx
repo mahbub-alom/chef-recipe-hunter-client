@@ -1,10 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Button, Card, CardGroup, Col, Row } from 'react-bootstrap';
+import { FaThumbsUp } from "react-icons/fa";
 
 const Home = () => {
+
+    const [categories, setCategories] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:5000/chefdata')
+            .then(res => res.json())
+            .then(data => setCategories(data))
+            .catch(err => console.log(err.message))
+    }, [])
     return (
-        <div>
-            <h2>this is home</h2>
-        </div>
+        <Row>
+            {
+                categories.map(d => (
+                    <Col md={4} xs={1} >
+                        <Card className='mb-5'>
+                            <Card.Img style={{ height: '400px' }} className='img-fluid' variant="top" src={d.Picture} />
+
+                            <Card.Title className='ms-2'>{d.Name}</Card.Title>
+                            <div className='d-flex justify-content-around align-item-center'>
+                                <p className='fs-5'>Experience Year: {d.Experience}</p>
+                                <p className='fs-5'>Number of Recipes: {d.Recipes}</p>
+                            </div>
+                            <h4 className='ms-2'> <FaThumbsUp /> {d.Likes}</h4>
+
+                            <Button><Link to='/'>View Recipe</Link></Button>
+                        </Card>
+                    </Col>
+                ))
+            }
+        </Row>
     );
 };
 
