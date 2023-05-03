@@ -28,7 +28,7 @@ function Footer() {
                 </div>
             </div>
             <div style={{ backgroundColor: '#222', textAlign: 'center', padding: '1rem' }}>
-                <p>&copy; 2023 Company Name. All rights reserved.</p>
+                <p>&copy; 2023 Gourmet place. All rights reserved.</p>
             </div>
         </footer>
     );

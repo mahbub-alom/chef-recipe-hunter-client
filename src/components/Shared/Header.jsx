@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import logo from '../../assets/logo/OIP.jpg'
 import { Link } from 'react-router-dom';
-import { FaUser } from "react-icons/fa";
+import { AuthContext } from '../Providers/AuthProviders';
 
 const Header = () => {
+
+    const { user } = useContext(AuthContext);
+    console.log(user.displayName);
     return (
         <div>
             {/* <Container> */}
@@ -18,8 +21,11 @@ const Header = () => {
 
                     </Nav>
                     <Nav className='d-flex align-items-center gap-3 pe-4'>
-                        <FaUser className='fs-2 text-bg-info p-2 rounded-3 mt-3'></FaUser>
-                        <button type="button" className="btn btn-success mt-3"><Link className='text-white text-decoration-none' to='/login'>Login</Link></button>
+                        {
+                            user ?
+                                <span className='text-light'>{user.displayName}</span> :
+                                <button type="button" className="btn btn-success mt-3"><Link className='text-white text-decoration-none' to='/login'>Login</Link></button>
+                        }
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

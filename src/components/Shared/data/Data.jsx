@@ -42,7 +42,7 @@ const Data = () => {
                                         {
                                             data.recipes[0].ingredients.map(d => (
 
-                                                <p className='text-light mb-0'><FaAngleDoubleRight /> {d}</p>
+                                                <p key={data.id} className='text-light mb-0'><FaAngleDoubleRight /> {d}</p>
 
                                             ))
                                         }
