@@ -5,9 +5,9 @@ function Footer() {
     return (
         <footer style={{ backgroundColor: '#333', color: '#fff' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem' }}>
-                <div>
+                <div className='w-25'>
                     <h3>Gourmet Place</h3>
-                    <p></p>
+                    <p>Adding the word gourmet to any food or drink makes it feel upscale and generally more desirable. It is often it is wrongly overused. Here are some correct ways to accurately use the term</p>
                 </div>
                 <div>
                     <h4>Links</h4>

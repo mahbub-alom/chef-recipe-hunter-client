@@ -21,7 +21,7 @@ const Data = () => {
                                     <p className='fw-semibold'><span><FaThumbsUp className='text-danger' /> {data.Likes}</span> Likes
                                     </p>
                                 </div>
-                                <Card.Text>
+                                <Card.Text className='fw-semibold text-success'>
                                     {data.description}
                                 </Card.Text>
                             </Card.Body>
@@ -57,6 +57,12 @@ const Data = () => {
                                             ></Rating>
                                             <span className='ms-1 text-light'>{d?.rating}</span>
                                         </div>
+                                        {/* <button
+                                                onClick={handleFavoriteClick}
+                                                disabled={isFavorite}
+                                                >
+                                                {isFavorite ? "Favorite" : "Add to favorites"}
+                                                </button> */}
                                         <button className='bg-warning border-0 rounded fw-medium p-2'><FaHeart /> FAVORITE</button>
                                     </div>
                                 </div>
@@ -66,7 +72,7 @@ const Data = () => {
                     
                 </Row>
             </Container>
-
+            {/* <Toast /> */}
         </div >
     )
 };

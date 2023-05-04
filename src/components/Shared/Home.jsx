@@ -28,7 +28,7 @@ const Home = () => {
                             </div>
                             <h4 className='ms-3'> <FaThumbsUp className='text-danger' /> {d.Likes}</h4>
 
-                            <Button className='mt-3 mb-2'><Link className='text-decoration-none fs-5 text-light' to={`/data/${d.id}`}>View Recipe <FaArrowCircleRight /></Link></Button>
+                            <Button className='mt-3 mb-2 w-50 mx-auto'><Link className='text-decoration-none fs-5 text-light' to={`/data/${d.id}`}>View Recipe <FaArrowCircleRight /></Link></Button>
                         </Card>
                     </Col>
                 ))
