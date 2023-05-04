@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { updateProfile } from "firebase/auth";
 
-function Login() {
-    const { createUser } = useContext(AuthContext)
+function Register() {
+    const { createUser } = useContext(AuthContext);
+    
+    const [error,setError]=useState('');
+    const [success,setSuccess]=useState('')
 
     const handleCreateAccount = (event) => {
         event.preventDefault()
@@ -15,6 +18,7 @@ function Login() {
         const password = form.password.value;
         const name = form.name.value;
         const photo = form.photo.value;
+        
 
         createUser(email, password)
             .then(result => {
@@ -23,12 +27,15 @@ function Login() {
                 updateProfile(loggedUser, {
                     displayName: name, photoURL: photo
                 })
+                setError('')
+                form.reset()
 
             })
-            .catch(err => {
-                console.log(err.message);
+            .catch(error => {
+                console.log(error.message);
+                setError(error.message)
             })
-        form.reset()
+        
     }
 
 
@@ -66,6 +73,7 @@ function Login() {
                         <Form.Text className=" text-secondary">
                             Already have an account? <Link to='/login'>Login</Link>
                         </Form.Text>
+                    <p className="text-danger">{error}</p>
                     </Form>
                 </Col>
             </Row>
@@ -73,4 +81,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default Register;

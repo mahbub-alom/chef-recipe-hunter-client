@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 
 function Login() {
-    const { logIn, googleLogin } = useContext(AuthContext)
+    const { logIn, googleLogin,githubLogin } = useContext(AuthContext)
 
     const handleLogin = (event) => {
         event.preventDefault()
@@ -20,6 +20,7 @@ function Login() {
             .catch(err => {
                 console.log(err.message);
             })
+            form.reset()
     }
 
     const googleSignIn = () => {
@@ -32,6 +33,18 @@ function Login() {
                 console.log(err.message);
             })
     }
+
+    const githubSignIn=()=>{
+        githubLogin()
+        .then(result=>{
+            const loggedUser=result.user;
+            console.log(loggedUser);
+        })
+        .catch(error=>{
+            console.log(error.message);
+        })
+    }
+    
 
     return (
         <Container className="mb-4 mt-4">
@@ -58,14 +71,15 @@ function Login() {
                         <Form.Text className=" text-secondary">
                             Don't have an Account? <Link to='/register'>Register</Link>
                         </Form.Text>
-                        <Form.Text className="d-flex gap-3 mt-3">
-                            <button onClick={googleSignIn} className="border-0 rounded bg-success fs-6 p-2 text-light">Login with Google</button>
-                            <button className="border-0 rounded bg-success fs-6 p-2 text-light">Login with Github</button>
-                        </Form.Text>
+
                         <Form.Text className="text-success">
 
                         </Form.Text>
                     </Form>
+                    <Form.Text className="d-flex gap-3 mt-3">
+                            <button onClick={googleSignIn} className="border-0 rounded bg-success fs-6 p-2 text-light">Login with Google</button>
+                            <button onClick={githubSignIn} className="border-0 rounded bg-success fs-6 p-2 text-light">Login with Github</button>
+                        </Form.Text>
                 </Col>
             </Row>
         </Container>

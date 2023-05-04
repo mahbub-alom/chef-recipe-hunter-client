@@ -8,6 +8,19 @@ import background from './Header.css'
 const Header = () => {
 
     const { user, logOut } = useContext(AuthContext);
+const handleLogOut=()=>{
+    logOut()
+    .then(result=>{
+        const loggedUser=result.user;
+        console.log(loggedUser);
+    })
+    .catch(error=>{
+        console.log(error.message);
+    })
+}
+
+
+
     return (
         <div className='background'>
             {/* <Container> */}
@@ -23,7 +36,12 @@ const Header = () => {
                     <Nav className='d-flex align-items-center gap-3 pe-4'>
                         {
                             user ?
-                                <span className='text-light'>{user?.displayName}</span>
+                                <>
+                                <div>
+                                <img title={user?.displayName} style={{height:"40px",width:'40px',borderRadius:'50%'}} className='' src={user?.photoURL} alt="" />
+                                </div>
+                                <button onClick={handleLogOut} type="button" className="btn btn-success mt-3">LogOut</button>
+                                </>
                                 :
                                 <button type="button" className="btn btn-success mt-3"><Link className='text-white text-decoration-none' to='/login'>Login</Link></button>
                         }
