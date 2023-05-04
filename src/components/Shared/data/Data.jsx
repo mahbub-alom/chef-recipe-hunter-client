@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import Rating from 'react-rating';
 import { FaRegStar, FaStar, FaHeart, FaAngleDoubleRight, FaShoppingBag, FaThumbsUp } from 'react-icons/fa';
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Data = () => {
     const data = useLoaderData();
+    const [isFavorite, setIsFavorite] = useState(false);
+
+    const handleFavoriteClick=()=> {
+        setIsFavorite(true);
+        toast("This recipe is now in your favorites!");
+      }
+      const showToast=(message)=> {
+        // Code to show a toast message
+        // ...
+    
+        // After the toast is finished, disable the favorite button
+        setFavoriteButtonDisabled(true);
+      }
     return (
         <div>
             <Container>
@@ -57,22 +72,23 @@ const Data = () => {
                                             ></Rating>
                                             <span className='ms-1 text-light'>{d?.rating}</span>
                                         </div>
-                                        {/* <button
+                                        <button
+                                        className='border-0 bg-warning p-2 rounded text-success'
                                                 onClick={handleFavoriteClick}
                                                 disabled={isFavorite}
                                                 >
-                                                {isFavorite ? "Favorite" : "Add to favorites"}
-                                                </button> */}
-                                        <button className='bg-warning border-0 rounded fw-medium p-2'><FaHeart /> FAVORITE</button>
+                                                {isFavorite ? <span>Favorite</span> : <span>Add to favorites</span>}
+                                                </button>
+                                        
                                     </div>
                                 </div>
                             </Col>
                         ))
                     }
-                    
+                    <ToastContainer />
                 </Row>
             </Container>
-            {/* <Toast /> */}
+            <toast />
         </div >
     )
 };

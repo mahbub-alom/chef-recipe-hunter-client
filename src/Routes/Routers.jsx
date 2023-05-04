@@ -7,11 +7,13 @@ import Data from "../components/Shared/data/Data";
 import Login from "../components/Shared/Login/Login";
 import Register from "../components/Shared/Register/Register";
 import PrivateRoute from "../components/PrivateRouter/PrivateRoute";
+import Error from "../components/Shared/Errorpage/Error";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement:<Error></Error>,
         children: [
             {
                 path: '/',
@@ -31,7 +33,8 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
-            }
+            },
+
         ]
     }
 ])
