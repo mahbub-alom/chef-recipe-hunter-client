@@ -4,7 +4,7 @@ const Blog = () => {
     return (
         <div className='grid' md={2}>
             <div>
-                <h2>Tell us the differences between uncontrolled and controlled components?</h2>
+                <h2>What are the differences between uncontrolled and controlled components?</h2>
                 <p className='fw-semibold'><span className='text-danger'>Uncontrolled components:</span>Uncontrolled components are components that manage their own internal state without relying on the React state. They obtain their initial value directly from the DOM and then rely on the DOM to update the value as the user interacts with the component.</p>
             </div>
             <div>
@@ -16,7 +16,7 @@ const Blog = () => {
                 </p>
             </div>
             <div>
-                <h2>Tell us the difference between nodejs and express js?</h2>
+                <h2>What is the difference between nodejs and express js?</h2>
                 <p className='fw-semibold'><span className='text-danger'>Node js: </span>Node.js is an open-source, cross-platform JavaScript runtime environment that allows developers to build server-side applications using JavaScript. It uses an event-driven, non-blocking I/O model, making it efficient and lightweight. Node.js is particularly well-suited for building scalable, high-performance web applications, real-time applications, and APIs.</p>
                 <p className='fw-semibold'>
                     <span className='text-danger'>express js: </span>
