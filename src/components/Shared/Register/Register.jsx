@@ -13,13 +13,27 @@ function Register() {
 
     const handleCreateAccount = (event) => {
         event.preventDefault()
+        setSuccess('')
+        setError('')
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
         const name = form.name.value;
         const photo = form.photo.value;
         
-
+        if(!/(?=.*[A-Z])/.test(password)){
+            setError('Password should be one uppercase!')
+            return;
+        }
+        else if(!/(?=.*[0-9])/.test(password)){
+            setError('Password should be at least one number')
+        return;
+        }
+        else if(password.length<6){
+            setError('Please add at least 6 characters in your password')
+            return;
+        }
+        setError('')
         createUser(email, password)
             .then(result => {
                 const loggedUser = result.user;
@@ -27,6 +41,7 @@ function Register() {
                 updateProfile(loggedUser, {
                     displayName: name, photoURL: photo
                 })
+                setSuccess('user has been created successfully')
                 setError('')
                 form.reset()
 
@@ -74,6 +89,7 @@ function Register() {
                             Already have an account? <Link to='/login'>Login</Link>
                         </Form.Text>
                     <p className="text-danger">{error}</p>
+                    <p className="text-success">{success}</p>
                     </Form>
                 </Col>
             </Row>

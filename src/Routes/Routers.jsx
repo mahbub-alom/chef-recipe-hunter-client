@@ -6,6 +6,7 @@ import Home from "../components/Shared/Home";
 import Data from "../components/Shared/data/Data";
 import Login from "../components/Shared/Login/Login";
 import Register from "../components/Shared/Register/Register";
+import PrivateRoute from "../components/PrivateRouter/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -18,7 +19,9 @@ const router = createBrowserRouter([
             },
             {
                 path: '/data/:id',
-                element: <Data></Data>,
+                element: <PrivateRoute>
+                    <Data></Data>
+                </PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/chefdata/${params.id}`)
             },
             {

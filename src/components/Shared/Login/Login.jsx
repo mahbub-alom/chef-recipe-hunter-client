@@ -1,13 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 
 function Login() {
     const { logIn, googleLogin,githubLogin } = useContext(AuthContext)
+    const [error,setError]=useState('');
+    const [success,setSuccess]=useState('')
+
+    const navigate=useNavigate();
+    const location =useLocation();
+    const from =location.state?.from?.pathname||'/';
 
     const handleLogin = (event) => {
         event.preventDefault()
+        setError('')
+        setSuccess('')
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
@@ -16,11 +24,15 @@ function Login() {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                navigate(from)
+                // setSuccess('Login Successfully completed')
+                // form.reset()
             })
-            .catch(err => {
-                console.log(err.message);
+            .catch(error => {
+                console.log(error.message);
+                setError(error.message)
             })
-            form.reset()
+            
     }
 
     const googleSignIn = () => {
@@ -68,6 +80,8 @@ function Login() {
                             Login
                         </Button>
                         <br />
+                        <p className="text-danger">{error}</p>
+                        <p className="text-success">{success}</p>
                         <Form.Text className=" text-secondary">
                             Don't have an Account? <Link to='/register'>Register</Link>
                         </Form.Text>
