@@ -1,8 +1,14 @@
 import React from 'react';
+import Pdf from "react-to-pdf";
+
+const ref = React.createRef();
 
 const Blog = () => {
     return (
-        <div className='grid' md={2}>
+        <div ref={ref} className='grid' md={2}>
+                <Pdf targetRef={ref} filename="code-example.pdf">
+                    {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
+                </Pdf>
             <div>
                 <h2>What are the differences between uncontrolled and controlled components?</h2>
                 <p className='fw-semibold'><span className='text-danger'>Uncontrolled components:</span>Uncontrolled components are components that manage their own internal state without relying on the React state. They obtain their initial value directly from the DOM and then rely on the DOM to update the value as the user interacts with the component.</p>

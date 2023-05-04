@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Row } from 'react-bootstrap';
 import { FaThumbsUp, FaShoppingBag, FaArrowCircleRight } from "react-icons/fa";
+import LazyLoad from 'react-lazy-load';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
@@ -19,7 +20,10 @@ const Home = () => {
                 categories.map(d => (
                     <Col key={d.id} md={4}  >
                         <Card className='mb-5'>
-                            <Card.Img style={{ height: '400px' }} className='img-fluid p-2 rounded' variant="top" src={d.Picture} />
+                        <LazyLoad threshold={0.95}>
+                        <Card.Img style={{ height: '400px' }} className='img-fluid p-2 rounded' variant="top" src={d.Picture} />
+                        </LazyLoad>
+                            {/* <Card.Img style={{ height: '400px' }} className='img-fluid p-2 rounded' variant="top" src={d.Picture} /> */}
 
                             <Card.Title className='ms-3 fs-3 fw-bold'>{d.Name}</Card.Title>
                             <div>
