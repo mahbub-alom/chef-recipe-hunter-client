@@ -31,6 +31,8 @@ const handleLogOut=()=>{
                     <Nav className="mx-auto">
                         <Link className='text-decoration-none me-4 fw-medium fs-5 text-white text-bg-info p-2 rounded-3 mt-3' to='/'>Home</Link>
                         <Link className='text-decoration-none me-4 fw-medium fs-5 text-white text-bg-info p-2 rounded-3 mt-3' to='/'>Blog</Link>
+                        <Link className='text-decoration-none me-4 fw-medium fs-5 text-white text-bg-info p-2 rounded-3 mt-3' to='/'>About</Link>
+                        <Link className='text-decoration-none me-4 fw-medium fs-5 text-white text-bg-info p-2 rounded-3 mt-3' to='/'>Contact us</Link>
 
                     </Nav>
                     <Nav className='d-flex align-items-center gap-3 pe-4'>

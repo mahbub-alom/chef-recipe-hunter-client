@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Footer() {
     return (
@@ -11,19 +12,20 @@ function Footer() {
                 <div>
                     <h4>Links</h4>
                     <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Products</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                       <p><Link className='text-decoration-none fs-5 text-success' to='/'>Home</Link></p>
+                       <p><Link className='text-decoration-none fs-5 text-success' to='/'>Chefs</Link></p>
+                       <p><Link className='text-decoration-none fs-5 text-success' to='/'>About Us</Link></p>
+                       <p><Link className='text-decoration-none fs-5 text-success' to='/'>Contact Us</Link></p>
                     </ul>
                 </div>
                 <div>
                     <h4>Follow Us</h4>
                     <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">LinkedIn</a></li>
+
+                        <p><Link className='text-decoration-none fs-5 text-info' to='/'>Facebook</Link></p>
+                       <p><Link className='text-decoration-none fs-5 text-info' to='/'>Twitter</Link></p>
+                       <p><Link className='text-decoration-none fs-5 text-info' to='/'>Instagram</Link></p>
+                       <p><Link className='text-decoration-none fs-5 text-info' to='/'>LinkedIn</Link></p>
                     </ul>
                 </div>
             </div>

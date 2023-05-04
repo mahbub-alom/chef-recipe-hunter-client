@@ -11,7 +11,7 @@ const Data = () => {
             <Container>
                 <Row>
                     <Col key={data.id} lg={3}>
-                        <Card className='p-3 mb-4'>
+                        <Card className='p-3 mb-4 mt-4'>
                             <img className='rounded' src={data.Picture} alt="" />
                             <Card.Body>
                                 <Card.Title className='fw-bold fs-3'>{data.Name}</Card.Title>
@@ -27,16 +27,17 @@ const Data = () => {
                             </Card.Body>
                         </Card>
                     </Col>
+                    
                     {
                         data?.recipes?.map(d => (
                             <Col lg={9}>
-                                <div lg={3} className='p-2 d-lg-flex justify-content-around align-item-center bg-info rounded' >
+                                <div lg={3} className='p-2 mt-4 mb-4 d-lg-flex justify-content-around align-item-center bg-info rounded' >
                                     <div style={{ width: '200px' }}>
                                         <img className='img-fluid rounded' src={d.image} alt="" />
                                     </div>
                                     <div style={{ width: '300px' }}>
                                         <h3 className='text-light'>{d.name}</h3>
-                                        <p className='text-light'>{d.cooking_method}</p>
+                                        <p className='text-light'><span className='text-dark fw-bold'>Cooking Method:</span> {d.cooking_method}</p>
                                     </div>
                                     <div>
                                         {
@@ -62,6 +63,7 @@ const Data = () => {
                             </Col>
                         ))
                     }
+                    
                 </Row>
             </Container>
 
