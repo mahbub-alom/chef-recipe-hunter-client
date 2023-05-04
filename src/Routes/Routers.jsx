@@ -8,6 +8,7 @@ import Login from "../components/Shared/Login/Login";
 import Register from "../components/Shared/Register/Register";
 import PrivateRoute from "../components/PrivateRouter/PrivateRoute";
 import Error from "../components/Shared/Errorpage/Error";
+import Blog from "../components/Shared/Blog/Blog";
 
 const router = createBrowserRouter([
     {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
                 path: '/register',
                 element: <Register></Register>
             },
+            {
+                path:'/blog',
+                element:<Blog></Blog>
+            }
 
         ]
     }
