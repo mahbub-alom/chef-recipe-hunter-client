@@ -32,8 +32,7 @@ const handleLogOut=()=>{
                         <ul>
                             <NavLink className='text-decoration-none fs-3 font-light me-4 p-2 rounded' exact to="/" activeClassName="active">Home</NavLink>
                             <NavLink className='text-decoration-none fs-3 font-light me-4 p-2 rounded' to="/blog" activeClassName="active">Blog</NavLink>
-                            <NavLink className='text-decoration-none fs-3 font-light me-4 p-2 rounded' to="/contact" activeClassName="active">About</NavLink>
-                            <NavLink className='text-decoration-none fs-3 font-light p-2 rounded' to="/contact" activeClassName="active">Contact Us</NavLink>
+                            <NavLink className='text-decoration-none fs-3 font-light me-4 p-2 rounded' to="/about" activeClassName="active">About</NavLink>
                         </ul>
                     </Nav>
                     <Nav className='d-flex align-items-center gap-3 pe-4'>
