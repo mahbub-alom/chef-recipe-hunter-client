@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Data = () => {
     const data = useLoaderData();
+    console.log(data);
     const [isFavorite, setIsFavorite] = useState(false);
 
     const handleFavoriteClick=()=> {
@@ -55,13 +56,13 @@ const Data = () => {
                                         <p className='text-light'><span className='text-dark fw-bold'>Cooking Method:</span> {d.cooking_method}</p>
                                     </div>
                                     <div>
+                                        <div>
                                         {
-                                            data.recipes[0].ingredients.map(d => (
-
-                                                <p key={data.id} className='text-light mb-0'><FaAngleDoubleRight /> {d}</p>
-
-                                            ))
+                                            d.recipes?.ingredients?.map(di => <p> {di}</p>)
+  
+                                            
                                         }
+                                        </div>
                                         <div className='flex-grow-1 mt-2 align-item-center mb-4'>
                                             <Rating
                                                 placeholderRating={d.rating}

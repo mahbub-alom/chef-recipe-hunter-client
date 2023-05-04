@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import logo from '../../assets/logo/OIP.jpg'
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProviders';
 import background from './Header.css'
 
@@ -29,11 +29,12 @@ const handleLogOut=()=>{
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mx-auto">
-                        <Link className='text-decoration-none me-4 fw-medium fs-5 text-white text-bg-info p-2 rounded-3 mt-3' to='/'>Home</Link>
-                        <Link className='text-decoration-none me-4 fw-medium fs-5 text-white text-bg-info p-2 rounded-3 mt-3' to='/blog'>Blog</Link>
-                        <Link className='text-decoration-none me-4 fw-medium fs-5 text-white text-bg-info p-2 rounded-3 mt-3' to='/'>About</Link>
-                        <Link className='text-decoration-none me-4 fw-medium fs-5 text-white text-bg-info p-2 rounded-3 mt-3' to='/'>Contact us</Link>
-
+                        <ul>
+                            <NavLink className='text-decoration-none fs-3 font-light me-4 p-2 rounded' exact to="/" activeClassName="active">Home</NavLink>
+                            <NavLink className='text-decoration-none fs-3 font-light me-4 p-2 rounded' to="/blog" activeClassName="active">Blog</NavLink>
+                            <NavLink className='text-decoration-none fs-3 font-light me-4 p-2 rounded' to="/contact" activeClassName="active">About</NavLink>
+                            <NavLink className='text-decoration-none fs-3 font-light p-2 rounded' to="/contact" activeClassName="active">Contact Us</NavLink>
+                        </ul>
                     </Nav>
                     <Nav className='d-flex align-items-center gap-3 pe-4'>
                         {
