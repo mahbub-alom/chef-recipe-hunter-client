@@ -8,7 +8,7 @@ const Home = () => {
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/chefdata')
+        fetch('https://b7a10-chef-recipe-hunter-server-side-mahbub-alom.vercel.app/chefdata')
             .then(res => res.json())
             .then(data => setCategories(data))
             .catch(err => console.log(err.message))
