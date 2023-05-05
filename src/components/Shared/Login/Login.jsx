@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 function Login() {
     const { logIn, googleLogin,githubLogin } = useContext(AuthContext)
@@ -91,8 +92,8 @@ function Login() {
                         </Form.Text>
                     </Form>
                     <Form.Text className="d-flex gap-3 mt-3">
-                            <button onClick={googleSignIn} className="border-0 rounded bg-success fs-6 p-2 text-light">Login with Google</button>
-                            <button onClick={githubSignIn} className="border-0 rounded bg-success fs-6 p-2 text-light">Login with Github</button>
+                            <button onClick={googleSignIn} className="border-0 rounded bg-success fs-6 p-2 text-light"><FaGoogle/> Login with Google</button>
+                            <button onClick={githubSignIn} className="border-0 rounded bg-success fs-6 p-2 text-light"><FaGithub/> Login with Github</button>
                         </Form.Text>
                 </Col>
             </Row>

@@ -7,7 +7,7 @@ const Blog = () => {
     return (
         <div ref={ref} className='grid' md={2}>
                 <Pdf targetRef={ref} filename="code-example.pdf">
-                    {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
+                    {({ toPdf }) => <button className='bg-success p-2 rounded test-light border-0' onClick={toPdf}>Generate Pdf</button>}
                 </Pdf>
             <div>
                 <h2>What are the differences between uncontrolled and controlled components?</h2>
