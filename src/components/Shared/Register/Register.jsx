@@ -6,7 +6,7 @@ import { AuthContext } from "../../Providers/AuthProviders";
 import { updateProfile } from "firebase/auth";
 
 function Register() {
-    const { createUser } = useContext(AuthContext);
+    const { createUser ,logOut} = useContext(AuthContext);
     
     const [error,setError]=useState('');
     const [success,setSuccess]=useState('')
@@ -42,6 +42,7 @@ function Register() {
                     displayName: name, photoURL: photo
                 })
                 setSuccess('user has been created successfully')
+                logOut();
                 setError('')
                 form.reset()
 
